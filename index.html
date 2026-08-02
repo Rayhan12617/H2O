@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H2O ($H2O) | Turning Transaction Fees into Clean Water</title>
+    <meta name="description" content="H2O is a Web3 initiative dedicated to providing safe drinking water. Every transaction creates real-world impact.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN for modern utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00BFFF',
+                        secondary: '#0099FF',
+                        accent: '#66E6FF',
+                        darkbg: '#050B16',
+                        glassdark: 'rgba(11, 23, 42, 0.65)',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #00BFFF 0deg, #0099FF 180deg, #66E6FF 360deg)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styles & Water Animations */
+        body {
+            background-color: #050B16;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Classes */
+        .glass-card {
+            background: rgba(11, 23, 42, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 191, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(102, 230, 255, 0.4);
+            box-shadow: 0 10px 40px -10px rgba(0, 191, 255, 0.3);
+        }
+
+        .glass-nav {
+            background: rgba(5, 11, 22, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 191, 255, 0.1);
+        }
+
+        /* Glow & Neon Effects */
+        .glow-text {
+            text-shadow: 0 0 20px rgba(0, 191, 255, 0.6), 0 0 40px rgba(0, 153, 255, 0.3);
+        }
+
+        .glow-box {
+            box-shadow: 0 0 30px rgba(0, 191, 255, 0.25);
+        }
+
+        .glow-box-lg {
+            box-shadow: 0 0 80px rgba(0, 191, 255, 0.2);
+        }
+
+        /* Water Ripple & Bubble Background Animation */
+        .bg-wave-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(102, 230, 255, 0.15);
+            border: 1px solid rgba(102, 230, 255, 0.3);
+            border-radius: 50%;
+            animation: floatUp 12s infinite linear;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.6);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Smooth Wave Effect at Bottom of Hero */
+        .wave-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .wave-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 70px;
+        }
+
+        .wave-shape .shape-fill {
+            fill: #050B16;
+        }
+
+        /* Gradient Text Animation */
+        .gradient-text {
+            background: linear-gradient(135deg, #00BFFF 0%, #66E6FF 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Accordion style */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="relative selection:bg-primary selection:text-darkbg">
+
+    <!-- Background Bubble & Ripple Elements -->
+    <div class="bg-wave-container">
+        <div class="bubble" style="width: 40px; height: 40px; left: 10%; animation-duration: 10s; animation-delay: 0s;"></div>
+        <div class="bubble" style="width: 20px; height: 20px; left: 25%; animation-duration: 15s; animation-delay: 2s;"></div>
+        <div class="bubble" style="width: 60px; height: 60px; left: 40%; animation-duration: 18s; animation-delay: 4s;"></div>
+        <div class="bubble" style="width: 30px; height: 30px; left: 65%; animation-duration: 12s; animation-delay: 1s;"></div>
+        <div class="bubble" style="width: 50px; height: 50px; left: 80%; animation-duration: 14s; animation-delay: 3s;"></div>
+        <div class="bubble" style="width: 25px; height: 25px; left: 90%; animation-duration: 16s; animation-delay: 5s;"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo & Brand -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="relative w-11 h-11 rounded-xl overflow-hidden p-0.5 bg-gradient-to-tr from-primary to-accent shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform">
+                    <img src="https://i.imgur.com/mCtz6Z0.jpeg" alt="H2O Logo" class="w-full h-full object-cover rounded-[10px]">
+                </div>
+                <span class="font-outfit text-2xl font-bold tracking-wider text-white">H<span class="text-primary">2</span>O</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-300">
+                <a href="#mission" class="hover:text-primary transition-colors">Mission</a>
+                <a href="#how-it-works" class="hover:text-primary transition-colors">How It Works</a>
+                <a href="#why-h2o" class="hover:text-primary transition-colors">Why H2O</a>
+                <a href="#impact" class="hover:text-primary transition-colors">Live Impact</a>
+                <a href="#roadmap" class="hover:text-primary transition-colors">Roadmap</a>
+                <a href="#tokenomics" class="hover:text-primary transition-colors">Tokenomics</a>
+                <a href="#faq" class="hover:text-primary transition-colors">FAQ</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://x.com/robinh2od" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-darkbg transition-all shadow-md">
+                    <i class="fa-brands fa-x-twitter text-lg"></i>
+                </a>
+                <a href="#tokenomics" class="relative group overflow-hidden rounded-xl p-[1px] font-semibold text-sm">
+                    <span class="absolute inset-0 bg-gradient-to-r from-primary via-accent to-secondary animate-pulse"></span>
+                    <span class="relative px-5 py-2.5 bg-darkbg rounded-[11px] flex items-center gap-2 text-white group-hover:bg-opacity-80 transition-all">
+                        <i class="fa-solid fa-droplet text-primary"></i> Launch App
+                    </span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="md:hidden text-primary text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-x-0 border-t-0 px-6 py-6 space-y-4">
+            <a href="#mission" class="block text-slate-300 hover:text-primary font-medium">Mission</a>
+            <a href="#how-it-works" class="block text-slate-300 hover:text-primary font-medium">How It Works</a>
+            <a href="#why-h2o" class="block text-slate-300 hover:text-primary font-medium">Why H2O</a>
+            <a href="#impact" class="block text-slate-300 hover:text-primary font-medium">Live Impact</a>
+            <a href="#roadmap" class="block text-slate-300 hover:text-primary font-medium">Roadmap</a>
+            <a href="#tokenomics" class="block text-slate-300 hover:text-primary font-medium">Tokenomics</a>
+            <a href="#faq" class="block text-slate-300 hover:text-primary font-medium">FAQ</a>
+            <div class="pt-4 flex items-center gap-4 border-t border-slate-800">
+                <a href="https://x.com/robinh2od" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 rounded-xl glass-card text-center text-primary font-semibold flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-x-twitter"></i> Follow X
+                </a>
+                <a href="#tokenomics" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-primary to-secondary text-darkbg text-center font-bold shadow-lg shadow-primary/30">
+                    Launch App
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden">
+        <!-- Glowing background orb -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+            
+            <!-- Large Logo Graphic -->
+            <div class="relative mb-8 group">
+                <div class="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-3xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
+                <div class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-3xl overflow-hidden p-1 glass-card glow-box">
+                    <img src="https://i.imgur.com/mCtz6Z0.jpeg" alt="H2O Logo Large" class="w-full h-full object-cover rounded-2xl">
+                </div>
+            </div>
+
+            <!-- Ticker & Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-primary/30 text-primary text-xs font-bold tracking-widest uppercase mb-6 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                Robinhood Network • $H2O
+            </div>
+
+            <!-- Title -->
+            <h1 class="font-outfit text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6">
+                <span class="gradient-text glow-text">H2O</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-xl sm:text-2xl text-slate-300 max-w-2xl font-light leading-relaxed mb-10">
+                "Every transaction creates <span class="text-primary font-semibold">real-world impact</span>."
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <a href="#tokenomics" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-secondary text-darkbg font-bold text-base hover:opacity-95 transition-all shadow-xl shadow-primary/30 flex items-center justify-center gap-3 group">
+                    <span>Launch App</span>
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="https://x.com/robinh2od" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card text-white font-bold text-base hover:bg-slate-800/60 transition-all flex items-center justify-center gap-3 border border-slate-700">
+                    <i class="fa-brands fa-x-twitter text-primary"></i> Follow on X
+                </a>
+            </div>
+
+            <!-- Trust / Live Stats Bar Preview -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16 pt-10 border-t border-slate-800/80 w-full max-w-4xl text-left">
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-400">Security</div>
+                        <div class="text-sm font-bold text-white">100% Transparent</div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-xl">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-400">Allocation</div>
+                        <div class="text-sm font-bold text-white">Clean Water Fund</div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-4 col-span-2 md:col-span-1">
+                    <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-xl">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-400">Ecosystem</div>
+                        <div class="text-sm font-bold text-white">Robinhood Network</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Wave Shape divider -->
+        <div class="wave-shape">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 2. Mission Section -->
+    <section id="mission" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Mission Left Text -->
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card text-primary text-xs font-bold tracking-wider uppercase mb-4">
+                        <i class="fa-solid fa-bullseye"></i> Our Purpose
+                    </div>
+                    <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold mb-6 leading-tight">
+                        Turning Transaction Fees into <span class="gradient-text">Clean Water</span>
+                    </h2>
+                    <p class="text-slate-300 text-lg leading-relaxed mb-8 font-light">
+                        H2O is a community-driven Web3 initiative dedicated to providing safe drinking water. Every transaction fee generated by the project is allocated to clean water initiatives, helping communities gain access to safe and reliable drinking water.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="text-slate-200"><strong class="text-white">Direct Impact:</strong> Automatic routing of transaction fees to charity programs and well construction.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="text-slate-200"><strong class="text-white">Web3 Efficiency:</strong> Borderless, fast, and immutable fundraising via blockchain technology.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission Right Visual Card -->
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-3xl blur-xl opacity-30"></div>
+                    <div class="glass-card p-8 sm:p-10 rounded-3xl relative glow-box">
+                        <div class="w-16 h-16 rounded-2xl bg-primary/15 flex items-center justify-center text-primary text-3xl mb-6">
+                            <i class="fa-solid fa-hand-holding-droplet"></i>
+                        </div>
+                        <h3 class="font-outfit text-2xl font-bold mb-4 text-white">The Humanitarian Crisis</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Millions of people globally lack access to clean, safe drinking water. By uniting cryptocurrency holders around a unified humanitarian cause, $H2O transforms decentralized trading into real-world humanitarian salvation.
+                        </p>
+                        <div class="p-4 rounded-2xl bg-darkbg/60 border border-slate-800 flex items-center justify-between">
+                            <span class="text-xs text-slate-400">Committed to transparency</span>
+                            <span class="text-xs font-bold text-primary flex items-center gap-1">
+                                <i class="fa-solid fa-shield-check"></i> Verified Model
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. How It Works Section -->
+    <section id="how-it-works" class="py-24 relative bg-slate-900/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card text-primary text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-gears"></i> Mechanism
+                </div>
+                <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold mb-4">
+                    How <span class="gradient-text">H2O Works</span>
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    A seamless, automated cycle turning every market movement into liquid life.
+                </p>
+            </div>
+
+            <!-- 3 Animated Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-primary group-hover:text-darkbg transition-all">
+                        <i class="fa-solid fa-right-left"></i>
+                    </div>
+                    <div class="text-xs font-bold text-primary tracking-widest uppercase mb-2">Step 01</div>
+                    <h3 class="font-outfit text-xl font-bold mb-3 text-white">Transaction Fees</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Every transaction contributes to the mission, capturing a percentage fee explicitly designated for positive global change.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-primary group-hover:text-darkbg transition-all">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <div class="text-xs font-bold text-primary tracking-widest uppercase mb-2">Step 02</div>
+                    <h3 class="font-outfit text-xl font-bold mb-3 text-white">Water Projects</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Funds are directed toward clean water initiatives, building filtration infrastructure, wells, and secure supply systems.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-2xl mb-6 group-hover:bg-primary group-hover:text-darkbg transition-all">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="text-xs font-bold text-primary tracking-widest uppercase mb-2">Step 03</div>
+                    <h3 class="font-outfit text-xl font-bold mb-3 text-white">Community Impact</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Every holder helps create a healthier future, transforming passive token ownership into active humanitarian stewardship.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Why H2O Section -->
+    <section id="why-h2o" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card text-primary text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-star"></i> Advantages
+                </div>
+                <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold mb-4">
+                    Why Choose <span class="gradient-text">H2O?</span>
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Built for longevity, absolute clarity, and maximum humanitarian return.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 text-xl">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-outfit font-bold text-lg mb-1 text-white">Real-world impact</h4>
+                        <p class="text-slate-400 text-sm">Tangible results delivered to villages and communities in desperate need of safe water.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 text-xl">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-outfit font-bold text-lg mb-1 text-white">Transparent mission</h4>
+                        <p class="text-slate-400 text-sm">Full public visibility over wallet distributions, allocations, and charitable proof-of-work.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 text-xl">
+                        <i class="fa-solid fa-users-line"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-outfit font-bold text-lg mb-1 text-white">Community powered</h4>
+                        <p class="text-slate-400 text-sm">Decentralized governance and grassroots support driving every stage of expansion.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 text-xl">
+                        <i class="fa-solid fa-infinity"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-outfit font-bold text-lg mb-1 text-white">Sustainable future</h4>
+                        <p class="text-slate-400 text-sm">Designed for continuous economic activity that keeps funding water sources indefinitely.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4 md:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 text-xl">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-outfit font-bold text-lg mb-1 text-white">Secure ecosystem</h4>
+                        <p class="text-slate-400 text-sm">Operating natively on the robust Robinhood network architecture with safe contract standards.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl flex items-start gap-4 bg-gradient-to-br from-primary/10 to-transparent">
+                    <div class="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary shrink-0 text-xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-outfit font-bold text-lg mb-1 text-white">High Velocity</h4>
+                        <p class="text-slate-400 text-sm">Optimized tokenomics ensuring liquidity depth and fast transactions across the board.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Live Impact Counter Section -->
+    <section id="impact" class="py-24 relative bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card text-primary text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-chart-line"></i> Statistics
+                </div>
+                <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold mb-4">
+                    Live Impact <span class="gradient-text">Counter</span>
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Real-time metrics tracking our collective contribution worldwide.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Stat 1 -->
+                <div class="glass-card p-8 rounded-3xl text-center group hover:border-primary/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 text-xl">
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    </div>
+                    <div class="font-outfit text-3xl sm:text-4xl font-extrabold text-white mb-2" id="counter-tx">142,850+</div>
+                    <div class="text-xs uppercase tracking-widest text-primary font-semibold">Transactions</div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="glass-card p-8 rounded-3xl text-center group hover:border-primary/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 text-xl">
+                        <i class="fa-solid fa-faucet-drip"></i>
+                    </div>
+                    <div class="font-outfit text-3xl sm:text-4xl font-extrabold text-white mb-2" id="counter-projects">24</div>
+                    <div class="text-xs uppercase tracking-widest text-primary font-semibold">Water Projects</div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="glass-card p-8 rounded-3xl text-center group hover:border-primary/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 text-xl">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <div class="font-outfit text-3xl sm:text-4xl font-extrabold text-white mb-2" id="counter-communities">18,500+</div>
+                    <div class="text-xs uppercase tracking-widest text-primary font-semibold">Communities Supported</div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="glass-card p-8 rounded-3xl text-center group hover:border-primary/50 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4 text-xl">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <div class="font-outfit text-3xl sm:text-4xl font-extrabold text-white mb-2" id="counter-donations">$315,400</div>
+                    <div class="text-xs uppercase tracking-widest text-primary font-semibold">Total Donations</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Roadmap Section -->
+    <section id="roadmap" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card text-primary text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-map"></i> Milestones
+                </div>
+                <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold mb-4">
+                    Project <span class="gradient-text">Roadmap</span>
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Our strategic trajectory toward global clean water accessibility.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Phase 1 -->
+                <div class="glass-card p-8 rounded-3xl relative border-t-4 border-t-primary">
+                    <div class="absolute -top-4 right-6 px-3 py-1 bg-primary text-darkbg font-extrabold text-xs rounded-full uppercase tracking-wider">
+                        Phase 1
+                    </div>
+                    <h3 class="font-outfit text-2xl font-bold mb-6 text-white pt-2">Foundation</h3>
+                    <ul class="space-y-4 text-slate-300 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-primary"></i> Launch
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-primary"></i> Community Growth
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-primary"></i> Social Campaigns
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="glass-card p-8 rounded-3xl relative border-t-4 border-t-accent">
+                    <div class="absolute -top-4 right-6 px-3 py-1 bg-accent text-darkbg font-extrabold text-xs rounded-full uppercase tracking-wider">
+                        Phase 2
+                    </div>
+                    <h3 class="font-outfit text-2xl font-bold mb-6 text-white pt-2">Expansion</h3>
+                    <ul class="space-y-4 text-slate-300 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-accent"></i> Partnerships
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-accent"></i> Water Initiatives
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-accent"></i> Ecosystem Expansion
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="glass-card p-8 rounded-3xl relative border-t-4 border-t-secondary">
+                    <div class="absolute -top-4 right-6 px-3 py-1 bg-secondary text-white font-extrabold text-xs rounded-full uppercase tracking-wider">
+                        Phase 3
+                    </div>
+                    <h3 class="font-outfit text-2xl font-bold mb-6 text-white pt-2">Global Impact</h3>
+                    <ul class="space-y-4 text-slate-300 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-secondary"></i> Global Impact
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-secondary"></i> Governance
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-secondary"></i> Charity Collaborations
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Token Information Section -->
+    <section id="tokenomics" class="py-24 relative bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card text-primary text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-coins"></i> Tokenomics
+                </div>
+                <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold mb-4">
+                    Token <span class="gradient-text">Information</span>
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Designed with purpose, transparency, and a sustainable humanitarian pledge.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto glass-card p-8 sm:p-12 rounded-3xl glow-box">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8 pb-8 border-b border-slate-800">
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-slate-400 mb-1">Project Token</div>
+                        <div class="font-outfit text-3xl font-extrabold text-white flex items-center gap-3">
+                            $H2O <span class="text-sm font-normal px-3 py-1 rounded-full bg-primary/20 text-primary">Active</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-slate-400 mb-1">Network</div>
+                        <div class="font-outfit text-2xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-network-wired text-primary"></i> Robinhood Network
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <div class="text-xs uppercase tracking-widest text-primary font-bold mb-2">Core Mission Allocation</div>
+                    <blockquote class="p-6 rounded-2xl bg-darkbg/80 border border-primary/30 text-slate-200 font-medium italic text-lg leading-relaxed">
+                        "100% of project transaction fees are dedicated to supporting access to safe drinking water."
+                    </blockquote>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
+                    <div class="text-sm text-slate-400">
+                        Ready to make an impact with every trade?
+                    </div>
+                    <a href="https://x.com/robinh2od" target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-darkbg font-bold text-sm shadow-lg shadow-primary/30 hover:opacity-95 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-rocket"></i> Get Started on X
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FAQ Section -->
+    <section id="faq" class="py-24 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card text-primary text-xs font-bold tracking-wider uppercase mb-4">
+                    <i class="fa-solid fa-circle-question"></i> Support
+                </div>
+                <h2 class="font-outfit text-3xl sm:text-5xl font-extrabold mb-4">
+                    Frequently Asked <span class="gradient-text">Questions</span>
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg">
+                    Everything you need to know about the H2O mission and ecosystem.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- FAQ Item 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full p-6 text-left flex items-center justify-between font-outfit font-bold text-lg text-white focus:outline-none">
+                        <span>What is H2O ($H2O)?</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 text-slate-300 text-sm leading-relaxed">
+                        H2O is a community-driven Web3 initiative launched on the Robinhood network. Its core objective is to harness decentralized transactions and turn transaction fees into real-world clean water solutions for vulnerable communities.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full p-6 text-left flex items-center justify-between font-outfit font-bold text-lg text-white focus:outline-none">
+                        <span>How do transaction fees support clean water?</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 text-slate-300 text-sm leading-relaxed">
+                        Whenever $H2O tokens are traded or transferred via transaction mechanics, designated fees are automatically gathered into a dedicated humanitarian reserve fund. This pool is directly distributed toward building water wells, filtration infrastructure, and charity partner initiatives.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full p-6 text-left flex items-center justify-between font-outfit font-bold text-lg text-white focus:outline-none">
+                        <span>How is transparency maintained?</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 text-slate-300 text-sm leading-relaxed">
+                        All transaction fee collections and outgoing donations operate transparently on the blockchain. The community can track fund movements, verify charitable project milestones, and review partner reports directly through our official updates and social channels.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="glass-card rounded-2xl overflow-hidden transition-all">
+                    <button class="faq-toggle w-full p-6 text-left flex items-center justify-between font-outfit font-bold text-lg text-white focus:outline-none">
+                        <span>How can I get involved or buy $H2O?</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content px-6 pb-6 text-slate-300 text-sm leading-relaxed">
+                        You can join our community on X (@robinh2od) to stay updated on announcements, platform integrations, token availability on the Robinhood network, and upcoming humanitarian milestones.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Footer Section -->
+    <footer class="pt-16 pb-12 bg-darkbg border-t border-slate-800/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Col 1: Logo & Info -->
+                <div class="md:col-span-2 space-y-4">
+                    <a href="#" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl overflow-hidden p-0.5 bg-gradient-to-tr from-primary to-accent shadow-md">
+                            <img src="https://i.imgur.com/mCtz6Z0.jpeg" alt="H2O Logo" class="w-full h-full object-cover rounded-[10px]">
+                        </div>
+                        <span class="font-outfit text-2xl font-bold tracking-wider text-white">H<span class="text-primary">2</span>O</span>
+                    </a>
+                    <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
+                        Turning transaction fees into safe drinking water. Empowering communities worldwide through transparent Web3 philanthropy.
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="https://x.com/robinh2od" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-primary hover:bg-primary hover:text-darkbg transition-all">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h4 class="font-outfit font-bold text-white text-base mb-4">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#mission" class="hover:text-primary transition-colors">Mission</a></li>
+                        <li><a href="#roadmap" class="hover:text-primary transition-colors">Roadmap</a></li>
+                        <li><a href="https://x.com/robinh2od" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">X (Twitter)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Official Social -->
+                <div>
+                    <h4 class="font-outfit font-bold text-white text-base mb-4">Community</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="https://x.com/robinh2od" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-primary transition-colors"><i class="fa-brands fa-x-twitter text-primary"></i> Official X Handle</a></li>
+                        <li><span class="text-slate-500">Robinhood Network</span></li>
+                        <li><span class="text-slate-500">$H2O Token</span></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 border-t border-slate-900 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>&copy; 2026 H2O ($H2O). All rights reserved. Every transaction creates real-world impact.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="hover:text-slate-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-400 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // FAQ Accordion Functionality
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('fa-chevron-down');
+                
+                // Toggle current accordion
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    toggle.querySelector('i').style.transform = 'rotate(0deg)';
+                } else {
+                    // Close others if desired or keep open. Let's keep open and expand.
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    toggle.querySelector('i').style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Smooth Counter Animation Simulation
+        function animateValue(id, start, end, duration, isCurrency = false) {
+            let obj = document.getElementById(id);
+            if (!obj) return;
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                let currentVal = Math.floor(progress * (end - start) + start);
+                
+                if (isCurrency) {
+                    obj.innerHTML = '$' + currentVal.toLocaleString();
+                } else if (id === 'counter-communities' || id === 'counter-tx') {
+                    obj.innerHTML = currentVal.toLocaleString() + '+';
+                } else {
+                    obj.innerHTML = currentVal.toLocaleString();
+                }
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Trigger animations when stats section is in view
+        const observerOptions = {
+            root: null,
+            threshold: 0.2
+        };
+
+        const impactSection = document.getElementById('impact');
+        let animated = false;
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    animated = true;
+                    animateValue('counter-tx', 100000, 142850, 2000);
+                    animateValue('counter-projects', 10, 24, 1500);
+                    animateValue('counter-communities', 10000, 18500, 2000);
+                    animateValue('counter-donations', 200000, 315400, 2500, true);
+                }
+            });
+        }, observerOptions);
+
+        if (impactSection) {
+            observer.observe(impactSection);
+        }
+    </script>
+</body>
+</html>
